@@ -5,15 +5,25 @@ My Linux dotfiles.
 ## Extensions
 
 - ArcMenu: Windows-like start menu.
+
 - Blur my Shell: blur and transparent applications.
+
 - Clipboard Indicator: clipboard history.
+
 - Compiz windows effect: moving windows effect.
+
 - Dash to Panel: vertical panel with customization.
+
 - Highlight Focus: border on focus application.
+
 - Impatience: faster animation.
+
 - Rounded Window Corners Reborn: rounded corners for most app.
+
 - Screenshot Tool: better screenshot tool than default one.
+
 - Tiling Shell: convenient tiling system.
+
 - Quick Settings Tweaks: don't show notifications when showing calendar.
 
 ## Applications

@@ -14,6 +14,7 @@ My Linux dotfiles.
 - Rounded Window Corners Reborn
 - Screenshot Tool
 - Tiling Shell
+- Quick Settings Tweaks
 
 ## Applications
 

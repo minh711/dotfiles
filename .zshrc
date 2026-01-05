@@ -27,7 +27,7 @@ warp-cli() {
 
 # ===================== eza =====================
 ls() {
-  local level=2    # default tree depth
+  local level=2
   local args=()
   local long=0
 
@@ -36,12 +36,10 @@ ls() {
     case $1 in
       --tree)
         shift
-        # next argument is depth if provided
         if [[ $1 =~ ^[0-9]+$ ]]; then
-          depth=$1
+          level=$1
           shift
         fi
-        # call eza tree
         eza -T --level="$level" --all --color=always --icons=always --long --git --no-filesize --no-time --no-user --no-permissions "${args[@]}"
         return
         ;;
@@ -56,12 +54,9 @@ ls() {
     esac
   done
 
-  # fallback behavior
   if (( long )); then
-    # long listing, no grid
     eza -a --color=always --icons=always --long --git --no-filesize --no-time --no-user --no-permissions "${args[@]}"
   else
-    # grid view
     eza -a --color=always --icons=always --git --grid "${args[@]}"
   fi
 }

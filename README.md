@@ -31,3 +31,5 @@ My Linux dotfiles.
 - [bashtop](https://github.com/aristocratos/bashtop)
 
 - [eza](https://github.com/eza-community/eza): `ls` alternative.
+
+- [ranger](https://github.com/ranger/ranger#): vim-like file manager.

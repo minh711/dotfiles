@@ -2,7 +2,7 @@
 
 Kitty + Nautilus fix:
 
-Nautilus GUI apps do not inherit shell PATH.
+Nautilus GUI apps (with [nautilus-open-any-terminal](https://github.com/Stunkymonkey/nautilus-open-any-terminal)) do not inherit shell PATH.
 
 Kitty was installed in `~/.local/kitty.app/bin`, so Nautilus couldn’t find it.
 

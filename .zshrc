@@ -2,8 +2,6 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-# End of lines configured by zsh-newuser-install
-
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# End of lines configured by zsh-newuser-installh
 
 eval "$(oh-my-posh init zsh --config /home/minh711/.cache/oh-my-posh/themes/custom.omp.json)"

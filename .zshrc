@@ -30,22 +30,21 @@ ls() {
   local level=2
   local args=()
   local long=0
+  local tree=0
 
-  # parse arguments
   while [[ $# -gt 0 ]]; do
-    case $1 in
-      --tree)
+    case "$1" in
+      -l|--long)
+        long=1
+        shift
+        ;;
+      -t|--tree)
+        tree=1
         shift
         if [[ $1 =~ ^[0-9]+$ ]]; then
           level=$1
           shift
         fi
-        eza -T --level="$level" --all --color=always --icons=always --long --git --no-filesize --no-time --no-user --no-permissions "${args[@]}"
-        return
-        ;;
-      --long)
-        long=1
-        shift
         ;;
       *)
         args+=("$1")
@@ -54,10 +53,15 @@ ls() {
     esac
   done
 
-  if (( long )); then
-    eza -a --color=always --icons=always --long --git --no-filesize --no-time --no-user --no-permissions "${args[@]}"
+  if (( tree )); then
+    eza -T --level="$level" --all --color=always --icons=always --long --git \
+        --no-filesize --no-time --no-user --no-permissions "${args[@]}"
+  elif (( long )); then
+    eza -a --color=always --icons=always --long --git \
+        --no-filesize --no-time --no-user --no-permissions "${args[@]}"
   else
     eza -a --color=always --icons=always --git --grid "${args[@]}"
   fi
 }
 # ===================== End eza =====================
+

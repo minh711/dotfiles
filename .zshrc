@@ -9,10 +9,16 @@ export PATH="$HOME/.local/bin:$PATH"
 eval "$(oh-my-posh init zsh --config /home/minh711/.cache/oh-my-posh/themes/custom.omp.json)"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH="/opt/nvim/bin:$PATH"
+lazy_load_nvm() {
+  unset -f node npm npx nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+}
+
+for cmd in node npm npx nvm; do
+  eval "$cmd() { lazy_load_nvm; $cmd \"\$@\" }"
+done
+
 export PATH="/opt/nvim/bin:$PATH"
 
 warp-cli() {
@@ -64,4 +70,3 @@ ls() {
   fi
 }
 # ===================== End eza =====================
-

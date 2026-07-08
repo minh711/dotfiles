@@ -74,3 +74,33 @@ ls() {
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+
+killport() {
+  if [ -z "$1" ]; then
+    echo "Usage: killport <port>"
+    return 1
+  fi
+
+  local pid
+  pid=$(lsof -t -i :"$1")
+
+  if [ -z "$pid" ]; then
+    echo "No process found on port $1"
+    return 0
+  fi
+
+  kill -9 $pid
+  echo "Killed process(es) on port $1: $pid"
+}
+
+yazi() {
+  local tmp=$(mktemp)
+  command yazi --cwd-file="$tmp" "$@"
+
+  if [[ -f "$tmp" ]]; then
+    local cwd=$(cat "$tmp")
+    [[ -n "$cwd" && "$cwd" != "$PWD" ]] && cd "$cwd"
+    rm -f "$tmp"
+  fi
+}
